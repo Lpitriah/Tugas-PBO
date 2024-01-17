@@ -1,0 +1,101 @@
+Microsoft Windows [Version 10.0.19045.3803]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\WINDOWS\system32>cd\
+
+C:\>c:
+
+C:\>cd xampp
+
+C:\xampp>
+C:\xampp>cd mysql
+
+C:\xampp\mysql>cd bin
+
+C:\xampp\mysql\bin>mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 8
+Server version: 10.4.32-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> use klinik;
+Database changed
+MariaDB [klinik]> create table obat(
+    -> id int primary key auto_increment,
+    -> kdobat varchar(10) unique,
+    -> nama varchar(100),
+    -> berat varchar(10),
+    -> bentuk varchar(50));
+Query OK, 0 rows affected (0.230 sec)
+
+MariaDB [klinik]> show tables;
++------------------+
+| Tables_in_klinik |
++------------------+
+| dbperawat        |
+| obat             |
++------------------+
+2 rows in set (0.043 sec)
+
+MariaDB [klinik]> insert into obat(kdobat,nama,berat,bentuk)values('atl01','Atenolol','100mg','Tablet');
+Query OK, 1 row affected (0.236 sec)
+
+MariaDB [klinik]> insert into obat(kdobat,nama,berat,bentuk)values('btmsn01','Betametason','5mg','Tablet');
+Query OK, 1 row affected (0.021 sec)
+
+MariaDB [klinik]> insert into obat(kdobat,nama,berat,bentuk)values('dspr01','Disopiramid','100mg','Kapsul');
+Query OK, 1 row affected (0.018 sec)
+
+MariaDB [klinik]> insert into obat(kdobat,nama,berat,bentuk)values('entr01','Entromisin','250mg','Kapsul');
+Query OK, 1 row affected (0.176 sec)
+
+MariaDB [klinik]> insert into obat(kdobat,nama,berat,bentuk)values('isnzd01','Isoniazid','300mg','Tablet');
+Query OK, 1 row affected (0.015 sec)
+
+MariaDB [klinik]> select * from obat;
++----+---------+-------------+-------+--------+
+| id | kdobat  | nama        | berat | bentuk |
++----+---------+-------------+-------+--------+
+|  1 | atl01   | Atenolol    | 100mg | Tablet |
+|  2 | btmsn01 | Betametason | 5mg   | Tablet |
+|  3 | dspr01  | Disopiramid | 100mg | Kapsul |
+|  4 | entr01  | Entromisin  | 250mg | Kapsul |
+|  5 | isnzd01 | Isoniazid   | 300mg | Tablet |
++----+---------+-------------+-------+--------+
+5 rows in set (0.148 sec)
+
+MariaDB [klinik]> update obat set nama='Atenolol Acin' where id='1';
+Query OK, 1 row affected (0.097 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [klinik]> select * from obat;
++----+---------+---------------+-------+--------+
+| id | kdobat  | nama          | berat | bentuk |
++----+---------+---------------+-------+--------+
+|  1 | atl01   | Atenolol Acin | 100mg | Tablet |
+|  2 | btmsn01 | Betametason   | 5mg   | Tablet |
+|  3 | dspr01  | Disopiramid   | 100mg | Kapsul |
+|  4 | entr01  | Entromisin    | 250mg | Kapsul |
+|  5 | isnzd01 | Isoniazid     | 300mg | Tablet |
++----+---------+---------------+-------+--------+
+5 rows in set (0.002 sec)
+
+MariaDB [klinik]> delete from obat where kdobat='atl01';
+Query OK, 1 row affected (0.026 sec)
+
+MariaDB [klinik]> select * from obat;
++----+---------+-------------+-------+--------+
+| id | kdobat  | nama        | berat | bentuk |
++----+---------+-------------+-------+--------+
+|  2 | btmsn01 | Betametason | 5mg   | Tablet |
+|  3 | dspr01  | Disopiramid | 100mg | Kapsul |
+|  4 | entr01  | Entromisin  | 250mg | Kapsul |
+|  5 | isnzd01 | Isoniazid   | 300mg | Tablet |
++----+---------+-------------+-------+--------+
+4 rows in set (0.003 sec)
+
+MariaDB [klinik]>
